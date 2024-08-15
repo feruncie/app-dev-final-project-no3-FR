@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: "posts#index"
+
   # Routes for the Comment resource:
 
   # CREATE
