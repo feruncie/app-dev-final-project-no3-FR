@@ -15,15 +15,14 @@ task({ :sample_users => :environment }) do
     x.location = Faker::Address.city
     x.current_occupation = Faker::Job.title
     x.goals = Faker::Lorem.sentence
+    x.email = Faker::Internet.email
+    x.password = Faker::Internet.password
 
     x.save
   end
 end
 
-task(:sample_posts => :environment) do 
-  if Rails.env.development?
-    Post.destroy_all
-  end
+  task(:sample_posts => :environment) do 
 
   user_ids = User.pluck(:id)
   
@@ -32,6 +31,22 @@ task(:sample_posts => :environment) do
 
     y.title = Faker::Lorem.sentence
     y.body = Faker::Lorem.paragraph
+    y.user_id = user_ids.sample
+
+    y.save
+  end 
+end 
+
+task(:sample_comments => :environment) do 
+
+  post_ids = Post.pluck(:id)
+  user_ids = User.pluck(:id)
+  
+  20.times do 
+    y = Comment.new
+
+    y.body = Faker::Lorem.paragraph
+    y.post_id = post_ids.sample
     y.user_id = user_ids.sample
 
     y.save
