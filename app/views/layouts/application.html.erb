@@ -13,10 +13,15 @@
   
   <body>
     <nav>
-      <a href="/users/sign_up">Sign Up</a>
-      <a href="/users/sign_in">Sign In</a>
-      <a href="/users/sign_out">Sign Out</a>
-      <a href="/users/edit">Edit Profile</a>
+      <% if current_user != nil %>
+        <a href="/users/sign_out">Sign Out</a>
+        <a href="/users/edit">Edit Profile</a>
+      <% else %>
+        <a href="/users/sign_up">Sign Up</a>
+        <a href="/users/sign_in">Sign In</a>
+      <% end %>
+      
+      
     <%= yield %>
 
     <p class="notice"><%= notice %></p>
