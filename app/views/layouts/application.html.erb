@@ -10,7 +10,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  
   <body>
+    <nav>
+      <a href="/users/sign_up">Sign Up</a>
+      <a href="/users/sign_in">Sign In</a>
+      <a href="/users/sign_out">Sign Out</a>
+      <a href="/users/edit">Edit Profile</a>
     <%= yield %>
 
     <p class="notice"><%= notice %></p>
