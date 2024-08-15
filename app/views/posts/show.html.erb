@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Post #<%= @the_post.id %> details
+      <%= @the_post.title %> 
     </h1>
 
     <div>
@@ -37,7 +37,12 @@
         User
       </dt>
       <dd>
-        <%= @the_post.user_id %>
+        <% matching_users = User.where({ :id => @the_post.user_id }) %>
+
+        <% the_user = matching_users.at(0) %>
+
+        <%= the_user.username.capitalize %> 
+     
       </dd>
 
       <dt>
@@ -83,14 +88,6 @@
         <textarea id="body_box" name="query_body"><%= @the_post.body %></textarea>
       </div>
 
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_post.user_id %>">
-      </div>
-
       <button>
         Update post
       </button>
@@ -99,3 +96,91 @@
 </div>
 
 <hr>
+
+<h2>Comments</h2>
+
+<div>
+  <div>
+    <h2>
+      Add a new comment
+    </h2>
+
+    <% if current_user %>
+    <form action="/insert_comment" method="post">
+        <input type="hidden" name="query_user_id" value="<%= current_user.id %>">
+        <input type="hidden" name="query_post_id" value="<%= @post.id %>">
+
+      <div>
+        <label for="body_box">
+          Comment
+        </label>
+
+        <textarea id="body_box" name="query_body" rows="3"></textarea>
+      </div>
+
+      <button>
+        Create a new comment
+      </button>
+    </form>
+    <% else %>
+      <p> You must be logged in to add a comment </p>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <div>
+    <table border="1">
+      <tr>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Comment
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+          Delete Comment 
+        </th>
+      </tr>
+
+      
+      <% @the_post.comments.each do |a_comment| %>
+      <tr>
+
+        <td>
+          <%= a_comment.user.username.capitalize %> 
+        </td>
+
+
+        <td>
+          <%= a_comment.body %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_comment.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_comment.updated_at) %> ago
+        </td>
+
+        <td> <!-- change this to delete a comment but only user can delete their own comment -->
+          <a href="/comments/<%= a_comment.id %>">
+            Delete Comment 
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

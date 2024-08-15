@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      List of all posts
+      All community posts
     </h1>
   </div>
 </div>
@@ -11,7 +11,7 @@
 <div>
   <div>
     <h2>
-      Add a new post
+      Create a new post
     </h2>
 
     <form action="/insert_post" method="post">
@@ -51,9 +51,6 @@
   <div>
     <table border="1">
       <tr>
-        <th>
-          ID
-        </th>
 
         <th>
           Title
@@ -81,9 +78,6 @@
 
       <% @list_of_posts.each do |a_post| %>
       <tr>
-        <td>
-          <%= a_post.id %>
-        </td>
 
         <td>
           <%= a_post.title %>
@@ -94,7 +88,12 @@
         </td>
 
         <td>
-          <%= a_post.user_id %>
+          <% matching_users = User.where({ :id => a_post.user_id }) %>
+
+          <% the_user = matching_users.at(0) %>
+
+          <%= the_user.username.capitalize %>
+          
         </td>
 
         <td>
@@ -106,7 +105,7 @@
 
         <td>
           <a href="/posts/<%= a_post.id %>">
-            Show details
+            Discussion details
           </a>
         </td>
       </tr>
