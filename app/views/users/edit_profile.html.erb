@@ -1,5 +1,23 @@
 <h1>Complete Your Profile</h1>
 
+<div>
+    <div>
+      <a href="/users">
+        All users
+      </a>
+    </div>
+  </div>
+
+<div>
+      <div>
+        <a href="/posts">
+          All community posts
+        </a>
+      </div>
+  </div>
+
+<hr>
+
 <%= form_with(:model => @the_user, :url => update_profile_path, :method => :post) do |profile_form| %>
   <div>
     <%= profile_form.label :first_name %>
