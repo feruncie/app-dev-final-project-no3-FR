@@ -23,7 +23,7 @@ class PostsController < ApplicationController
     the_post = Post.new
     the_post.title = params.fetch("query_title")
     the_post.body = params.fetch("query_body")
-    the_post.user_id = params.fetch("query_user_id")
+    
 
     if the_post.valid?
       the_post.save
