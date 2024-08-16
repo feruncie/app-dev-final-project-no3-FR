@@ -7,15 +7,16 @@
     <div>
       <div>
         <a href="/users">
-          Go back
+          All users
         </a>
       </div>
 
       <div>
-        <a href="/delete_user/<%= @the_user.id %>">
-          Delete user
+        <a href="/posts">
+          Community Posts 
         </a>
       </div>
+
     </div>
 
     <dl>
@@ -235,3 +236,9 @@
 </div>
 
 <hr>
+
+<div>
+ <a href="/delete_user/<%= @the_user.id %>">
+  Delete user
+  </a>
+</div>
