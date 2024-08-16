@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   #before_action :authenticate_user!, { :only => [:create]}
   def create
     the_comment = Comment.new
-    the_comment.user_id = params.fetch("query_user_id")
+    the_comment.user_id = current_user.id
     the_comment.post_id = params.fetch("query_post_id")
     the_comment.body = params.fetch("query_body")
 

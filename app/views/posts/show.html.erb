@@ -160,7 +160,12 @@
       <tr>
 
         <td>
-          <%= @the_post.user.username %> 
+          <% User.where({ :id => a_comment.user_id }).at(0) %>
+          <% if the_user%>
+            <%= the_user.username %>
+          <% else %>
+            Unkown user: 
+          <% end %>
         </td>
 
 
