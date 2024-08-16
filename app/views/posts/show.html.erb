@@ -41,8 +41,7 @@
 
         <% the_user = matching_users.at(0) %>
 
-        <%= the_user.username.capitalize %> 
-     
+        <%= link_to the_user.username.capitalize, "/users/#{the_user.id}" %>
       </dd>
 
       <dt>
