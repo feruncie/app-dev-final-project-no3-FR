@@ -38,7 +38,7 @@
         Last name
       </dt>
       <dd>
-        <%= @the_user.last_name.capitalize %>
+        <%= @the_user.last_name %>
       </dd>
 
       <dt>
@@ -131,7 +131,7 @@
       Edit user
     </h2>
 
-    <form action="/modify_user/<%= @the_user.id %>"  method="post" >
+    <form action="/update_profile/<%= @the_user.id %>"  method="post" >
       <div>
         <label for="username_box">
           Username
@@ -145,7 +145,7 @@
           First name
         </label>
 
-        <textarea id="first_name_box" name="query_first_name"><%= @the_user.first_name %></textarea>
+        <textarea id="first_name_box" name="first_name"><%= @the_user.first_name %></textarea>
       </div>
 
       <div>
@@ -153,7 +153,7 @@
           Last name
         </label>
 
-        <textarea id="last_name_box" name="query_last_name"><%= @the_user.last_name %></textarea>
+        <textarea id="last_name_box" name="last_name"><%= @the_user.last_name %></textarea>
       </div>
 
       <div>

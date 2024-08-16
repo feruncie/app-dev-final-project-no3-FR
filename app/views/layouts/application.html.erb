@@ -15,7 +15,7 @@
     <nav>
       <% if current_user != nil %>
         <a href="/users/sign_out">Sign Out</a>
-        <a href="/users/edit">Edit Profile</a>
+        <a href="/edit_profile/<%= current_user.id %>">Edit Profile</a>
       <% else %>
         <a href="/users/sign_up">Sign Up</a>
         <a href="/users/sign_in">Sign In</a>

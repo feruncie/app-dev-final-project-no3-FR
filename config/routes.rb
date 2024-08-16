@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get("/users/:path_id", { :controller => "users", :action => "show"})
 
   #finish completing profile and edit user profile 
-  get("/edit_profile", { :controller => "users", :action => "edit_profile"})
-  post("/update_profile", { :controller => "users", :action => "update_profile"})
+  get("/edit_profile", { :controller => "users", :action => "edit_profile"}) #complete profile 
+  post("/update_profile", { :controller => "users", :action => "update_profile"}) #update profile
 
   # Routes for the Comment resource:
 
