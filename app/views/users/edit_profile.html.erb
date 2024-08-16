@@ -1,0 +1,51 @@
+<h1>Complete Your Profile</h1>
+
+<%= form_with(:url => update_profile_path, :method => :post) do |profile_form| %>
+  <div>
+    <%= profile_form.label :first_name %>
+    <%= profile_form.text_field :first_name %>
+  </div>
+  <div>
+    <%= profile_form.label :last_name %>
+    <%= profile_form.text_field :last_name %>
+  </div>
+  <div>
+    <%= profile_form.label :biography %>
+    <%= profile_form.text_area :biography %>
+  </div>
+  <div>
+    <%= profile_form.label :current_occupation %>
+    <%= profile_form.text_field :current_occupation %>
+  </div>
+  <div>
+    <%= profile_form.label :goals %>
+    <%= profile_form.text_area :goals %>
+  </div>
+  <div>
+    <%= profile_form.label :industry %>
+    <%= profile_form.text_field :industry %>
+  </div>
+  <div>
+    <%= profile_form.label :interests %>
+    <%= profile_form.text_area :interests %>
+  </div>
+  <div>
+    <%= profile_form.label :location %>
+    <%= profile_form.text_field :location %>
+  </div>
+  <div>
+    <%= profile_form.label :linkedin_profile %>
+    <%= profile_form.text_field :linkedin_profile %>
+  </div>
+  <div>
+    <%= profile_form.label :mentee %>
+    <%= profile_form.check_box :mentee %>
+  </div>
+  <div>
+    <%= profile_form.label :mentor %>
+    <%= profile_form.check_box :mentor %>
+  </div>
+  <div>
+    <%= profile_form.submit "Update Profile" %>
+  </div>
+<% end %>

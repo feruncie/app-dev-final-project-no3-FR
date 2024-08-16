@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations"}
 
   devise_scope :user do
   root to: "devise/sessions#new"
@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get("/users", { :controller => "users", :action => "index"})
   
   get("/users/:path_id", { :controller => "users", :action => "show"})
+
+  #finish completing profile and edit user profile 
+  get("/edit_profile", { :controller => "users", :action => "edit_profile"})
+  post("/update_profile", { :controller => "users", :action => "update_profile"})
 
   # Routes for the Comment resource:
 
