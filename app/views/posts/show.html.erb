@@ -103,11 +103,13 @@
     <h2>
       Add a new comment
     </h2>
+    
 
     <% if current_user %>
     <form action="/insert_comment" method="post">
-        <input type="hidden" name="query_user_id" value="<%= current_user.id %>">
         <input type="hidden" name="query_post_id" value="<%= @the_post.id %>">
+        <input type="hidden" name="query_user_id" value="<%= current_user.id %>">
+
 
       <div>
         <label for="body_box">
@@ -158,7 +160,7 @@
       <tr>
 
         <td>
-          <%= a_comment.user.username.capitalize %> 
+          <%= a_comment.user.username %> 
         </td>
 
 
