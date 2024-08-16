@@ -1,0 +1,96 @@
+<div>
+  <div>
+    <h1>
+      Your Community
+    </h1>
+  </div>
+</div>
+
+ 
+ <!-- <div>
+      <div>
+        <a href="/">
+          Homepage
+        </a>
+   </div>
+
+    <div>
+      <div>
+        <a href="/posts">
+          Community Posts
+        </a>
+   </div> --> 
+
+<hr>
+
+
+<div>
+  <div>
+    <table border="1">
+      <tr>
+
+        <th>
+          First name
+        </th>
+
+        <th>
+          Last name
+        </th>
+
+        <th>
+          Mentor
+        </th>
+
+          <th>
+          Mentee
+        </th>
+
+        <th>
+          Current occupation
+        </th>
+
+        <th>
+          Location
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @users.each do |a_user| %>
+      <tr>
+
+        <td>
+          <%= a_user.first_name %>
+        </td>
+
+        <td>
+          <%= a_user.last_name %>
+        </td>
+
+        <td>
+          <%= a_user.mentor %>
+        </td>
+
+        <td>
+          <%= a_user.mentee %>
+        </td>
+
+        <td>
+          <%= a_user.current_occupation %>
+        </td>
+
+        <td>
+          <%= a_user.location %>
+        </td>
+
+        <td>
+          <a href="/users/<%= a_user.id %>">
+            User Profile Page
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
