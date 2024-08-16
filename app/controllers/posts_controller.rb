@@ -17,6 +17,8 @@ class PostsController < ApplicationController
     render({ :template => "posts/show" })
   end
 
+
+  before_action :authenticate_user!, { :only => [:create]}
   def create
     the_post = Post.new
     the_post.title = params.fetch("query_title")

@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
     render({ :template => "comments/show" })
   end
 
+  #before_action :authenticate_user!, { :only => [:create]}
   def create
     the_comment = Comment.new
     the_comment.user_id = params.fetch("query_user_id")
