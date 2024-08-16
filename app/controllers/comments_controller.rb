@@ -67,7 +67,7 @@ class CommentsController < ApplicationController
     the_comment = Comment.where({ :id => the_id }).at(0)
 
     if the_comment.user_id != current_user.id
-      redirect_to("/posts#{post_id}", { :alert => "You are not authorized to delete this comment." })
+      redirect_to("/posts/#{post_id}", { :alert => "You are not authorized to delete this comment." })
     end
   end
 end

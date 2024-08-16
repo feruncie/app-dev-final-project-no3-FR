@@ -182,7 +182,7 @@
 
         <td> <!-- change this to delete a comment but only user can delete their own comment right now this goes to comment details which we don't want -->
           <% if a_comment.user_id == current_user.id %>
-          <form action ="/comments/<%= a_comment.id %>" method="post">
+          <form action ="/delete_comment/<%= a_comment.id %>" method="get">
           <input type="hidden" name="_method" value="delete">
           <button type="submit">
             Delete Comment 
