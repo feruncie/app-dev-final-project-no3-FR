@@ -107,7 +107,7 @@
     <% if current_user %>
     <form action="/insert_comment" method="post">
         <input type="hidden" name="query_user_id" value="<%= current_user.id %>">
-        <input type="hidden" name="query_post_id" value="<%= @post.id %>">
+        <input type="hidden" name="query_post_id" value="<%= @the_post.id %>">
 
       <div>
         <label for="body_box">

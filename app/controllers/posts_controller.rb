@@ -33,13 +33,15 @@ class PostsController < ApplicationController
     end
   end
 
+  before_action :authenticate_user! 
+  before_action :ensure_correct_user, { :only => [:update] }
+
   def update
     the_id = params.fetch("path_id")
     the_post = Post.where({ :id => the_id }).at(0)
 
     the_post.title = params.fetch("query_title")
     the_post.body = params.fetch("query_body")
-    the_post.user_id = params.fetch("query_user_id")
 
     if the_post.valid?
       the_post.save
@@ -48,6 +50,17 @@ class PostsController < ApplicationController
       redirect_to("/posts/#{the_post.id}", { :alert => the_post.errors.full_messages.to_sentence })
     end
   end
+
+  private 
+
+  def ensure_correct_user
+    the_id = params.fetch("path_id")
+    the_post = Post.where({ :id => the_id }).at(0)
+
+    if the_post.user_id != current_user.id 
+      redirect_to("/posts", { :alert => "You cannot change another user's post"})
+    end 
+  end 
 
   def destroy
     the_id = params.fetch("path_id")
