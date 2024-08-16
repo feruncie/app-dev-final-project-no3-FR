@@ -6,20 +6,21 @@
   </div>
 </div>
 
- 
- <!-- <div>
-      <div>
+<div>
+    <div>
         <a href="/">
           Homepage
         </a>
    </div>
+  </div>
 
     <div>
       <div>
         <a href="/posts">
           Community Posts
         </a>
-   </div> --> 
+      </div>
+   </div>
 
 <hr>
 
@@ -57,7 +58,7 @@
         </th>
       </tr>
 
-      <% @users.each do |a_user| %>
+      <% @the_user.each do |a_user| %>
       <tr>
 
         <td>
@@ -77,7 +78,7 @@
         </td>
 
         <td>
-          <%= a_user.current_occupation %>
+          <%= a_user.current_occupation.capitalize %>
         </td>
 
         <td>
