@@ -48,12 +48,26 @@ class CommentsController < ApplicationController
     end
   end
 
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, { :only => [:destroy]}
   def destroy
     the_id = params.fetch("path_id")
     the_comment = Comment.where({ :id => the_id }).at(0)
+    post_id = the_comment.post_id
 
     the_comment.destroy
 
-    redirect_to("/comments", { :notice => "Comment deleted successfully."} )
+    redirect_to("/posts/#{post_id}", { :notice => "Comment deleted successfully."} )
+  end
+
+  private
+
+  def ensure_correct_user
+    the_id = params.fetch("path_id")
+    the_comment = Comment.where({ :id => the_id }).at(0)
+
+    if the_comment.user_id != current_user.id
+      redirect_to("/posts#{post_id}", { :alert => "You are not authorized to delete this comment." })
+    end
   end
 end

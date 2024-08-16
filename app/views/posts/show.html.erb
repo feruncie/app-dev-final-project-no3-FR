@@ -160,7 +160,7 @@
       <tr>
 
         <td>
-          <%= a_comment.user.username %> 
+          <%= @the_post.user.username %> 
         </td>
 
 
@@ -176,9 +176,14 @@
         </td>
 
         <td> <!-- change this to delete a comment but only user can delete their own comment right now this goes to comment details which we don't want -->
-          <a href="/comments/<%= a_comment.id %>">
+          <% if a_comment.user_id == current_user.id %>
+          <form action ="/comments/<%= a_comment.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit">
             Delete Comment 
-          </a>
+            </button>
+            </form>
+          <% end %>
         </td>
       </tr>
       <% end %>
